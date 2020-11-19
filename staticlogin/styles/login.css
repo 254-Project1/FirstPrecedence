@@ -1,0 +1,30 @@
+/* npm install bootstrap */
+/* https://getbootstrap.com/docs/4.5/getting-started/download/ */
+
+/* latin. took font from google fonts.*/
+@font-face {
+    font-family: 'Raleway';
+    font-style: italic;
+    font-weight: 600;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/raleway/v18/1Pt_g8zYS_SKggPNyCgSQamb1W0lwk4S4bbLDrMfIA.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+html, body {
+    font-size: 16px;
+    width: 100%;
+    background-color: lightgoldenrodyellow;
+}
+
+h1 {
+    font-family: 'Raleway';
+    margin: 1rem;
+}
+
+.form-container {
+    margin-top: 20vh;
+    background-color: white;
+    border-radius: 5%;
+    padding: 1.5rem;
+    box-shadow: 0rem 0rem .2rem 0rem black;
+}

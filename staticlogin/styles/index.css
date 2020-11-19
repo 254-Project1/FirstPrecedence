@@ -1,0 +1,78 @@
+html, body{
+    font-size: 16px;
+    width: 100%;
+    background-color: lightgoldenrodyellow;
+}
+a{
+    text-decoration: none; /* removes the underscore in the anchor */
+}
+.container{
+    display: flex; /* creates a flex group */
+    flex-direction: row;
+    width: 100%;
+}
+.image-nav-bar{
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 50%; /* the left hand side of the flex container will container an image */
+}
+.flex-postit-image{
+    width: 10%;
+    height: auto;
+    padding-left: 1.2rem; /* rem=root em. This will multiply the font-size of the html file by 1.2 [16px * 1.2] */
+}
+.login-setup-nav-bar{
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 50%; /* our main container will be split with the right hand and left hand side.*/
+}
+.flex-button{
+    padding: 10px; /* our button structure */
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: -2rem; /* only usage of negative margin to close gap between Sign Up and Log In */
+    margin-right: 3rem; /* gets rid of strange spacing */
+    width: 10%;
+    max-height: 50%;
+    text-align: center;
+    font-size: 1rem;
+    transition-duration: 0.7s;
+    cursor: pointer;
+}
+/* Need to fix text that shrinks at a certain width */
+.button1{ /* specific style applied to "Log In" */
+
+    border: 2px solid blue;
+    color: blue;
+    background-color: white; 
+}
+
+/* Need to fix text that shrinks at a certain width */
+.button2{ /* specific style applied to "Sign Up" */
+
+    border: 2px solid blue;
+    color: white;
+    background-color: blue;
+}
+
+.button1:hover{
+    background-color: antiquewhite;
+    color: blue;
+}
+.button2:hover{
+    background-color: blue;
+    color: antiquewhite;
+}
+
+.main-container{
+    display: flex; /* creates a flex group */
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+.center-penguin{
+    width: 25%;
+}
+
