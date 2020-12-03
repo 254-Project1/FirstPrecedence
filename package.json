@@ -2,8 +2,9 @@
   "name": "firstprecedence",
   "version": "1.0.0",
   "description": "The to-do list for you.",
-  "main": "login.js",
+  "main": "index.js",
   "scripts": {
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,9 +20,21 @@
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
-    "babel-preset-es2015": "^6.24.1"
+    "babel-preset-es2015": "^6.24.1",
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.6"
   },
   "dependencies": {
-    "bootstrap": "^4.5.3"
+    "bcrypt": "^5.0.0",
+    "bootstrap": "^4.5.3",
+    "connect-flash": "^0.1.1",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "express-flash": "0.0.2",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.11.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
   }
 }

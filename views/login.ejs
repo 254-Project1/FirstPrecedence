@@ -1,4 +1,4 @@
-<!-- browser-sync start --server --files "staticlogin/*.html, staticlogin/*.css, ,staticlogin/*.js" -->
+<!-- npm run start -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,10 +18,10 @@
     <section class="container">
         <div class="row justify-content-center"> <!-- bootstrap shortcuts a ton of styles for us, I did not need manual flexbox styling -->
             <div class="col-12 col-sm-6 col-md-3"> <!-- col-12 col-sm-6 col-md-3 are not defined by me, but by bootstrap-->
-                <form class="form-container">
+                <form action="login" method="POST" class="form-container">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" name="username" placeholder="Username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="email" name="email" placeholder="Email Address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                             else.</small>
                     </div>
@@ -33,7 +33,7 @@
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Remember Me</label>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
                 </form>
             </div>
         </div>
