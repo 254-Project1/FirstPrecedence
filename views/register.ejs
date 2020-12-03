@@ -20,20 +20,22 @@
             <div class="col-12 col-sm-6 col-md-3"> <!-- col-12 col-sm-6 col-md-3 are not defined by me, but by bootstrap-->
                 <form action="register" method="POST" class="form-container">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" name="email" placeholder="Email Address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                            else.</small>
+                        <label for="name">Name</label>
+                        <input type="text" name="name" placeholder="Name" class="form-control" id="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" name="password" placeholder="Password" class="form-control" id="exampleInputPassword1" required>
+                        <label for="email">Email</label>
+                        <input type="email" name="email" placeholder="Email Address" class="form-control" id="email" aria-describedby="emailHelp" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" placeholder="Password" class="form-control" id="password" required>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Register</button>
                 </form>
             </div>
         </div>
-        <a href='./login'>Login</a>
+        <button type="button" class="btn btm-primary btn-block"><a href='./login'>Login</a></button>
     </section>
     <!-- Bootstrap Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
