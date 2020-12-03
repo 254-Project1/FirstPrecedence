@@ -1,28 +1,47 @@
-
-<!-- browser-sync start --server --files "staticlogin/*.html, staticlogin/*.css, ,staticlogin/*.js" -->
+<!-- npm run start -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Login</title>
+
+    <!-- Bootstrap Scripts -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link href="./styles/register.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-    <h1>Register</h1>
-    <form action='/register' method="POST">
-        <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+    <h1>First Precedence</h1>
+    <section class="container">
+        <div class="row justify-content-center"> <!-- bootstrap shortcuts a ton of styles for us, I did not need manual flexbox styling -->
+            <div class="col-12 col-sm-6 col-md-3"> <!-- col-12 col-sm-6 col-md-3 are not defined by me, but by bootstrap-->
+                <form action="register" method="POST" class="form-container">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" name="email" placeholder="Email Address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" name="password" placeholder="Password" class="form-control" id="exampleInputPassword1" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+                </form>
+            </div>
         </div>
-        <div>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <button type="submit">Register</button>
-    </form>
-    <a href='./login'>Login</a>
+        <a href='./login'>Login</a>
+    </section>
+    <!-- Bootstrap Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
