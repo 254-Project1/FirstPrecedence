@@ -4,12 +4,14 @@ const LocalStrategy = require('passport-local').Strategy;
 const express = require('express');
 const app = express();
 
-const authenticateUser = require('./auth');
 
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
+const passport_init = require('./passport-config');
+
+passport_init(passport, email => users.find(user => user.email === email), id => users.find(user => user.id === id)); // anonymous functions, no name. Gets pass to passport-config for authentication
 
 const users = []; // TODO: Database Implementation. MongoDB implementation on the way
 
@@ -68,10 +70,6 @@ app.post('/register', async(req, res) => {
 
 });
 
-// app.get('/home', (req, res) => {
-//      res.render('home.ejs');
-// });
-
 // THE TASK ARRAY WILL HOLD ALL OF THE INFORMATION THAT THE USER INPUTS DURING THE SESSION
 var task = []; // this is a test array to comfirm the functionality of the program.
 
@@ -103,20 +101,6 @@ if(typeof completeTask === "string"){
 }
     res.redirect('./home');
 });
-// initialize our passport. 
-function initialize(passport, getUserByEmail, getUserByID) {
-    passport.use(new LocalStrategy({ usernameField: 'email'}, authenticateUser));
-    passport.serializeUser((user, done) => done(null, user.id));
-    passport.deserializeUser((id, done) => { 
-        return done(null, getUserByID(id));
-    });
-}
-
-initialize(passport, 
-    email => users.find(user => user.email === email),
-    id => users.find(user => user.id === id)
-)
-
 app.delete('./logout', (req,res) => {
     req.logOut();
     res.redirect('./login');
