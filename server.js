@@ -94,7 +94,7 @@ app.post('/addtask', (req,res) => {
     task.push(newTask);//after adding to the array go back to the home route
     res.redirect("/home");
 });
-app.get("/home", (req,res) => {    
+app.get("/home", checkAuthenticated, (req,res) => {    
   res.render("home.ejs", { task: task, complete:complete });
 });
 
