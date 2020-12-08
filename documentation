@@ -2,3 +2,4 @@ Bcrypt - handles the encryption of data, hashed the password.
 Passport - takes care of user verification/authentication.
 Express-Session - allows our information to persist the entire online session
 Express-Flash - allows us to post messages to the screen
+Codeshack.io, Web Dev Simplified, Vanessa Ating on Medium.com

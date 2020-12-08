@@ -1,3 +1,6 @@
+<!-- recall that embedded javascript is a templating language, hold placeholders for HTML code.-->
+<!-- Used in node.js when working with the Express framework. You can embedd JS code inside of an HTML file. -->
+<!-- EJS is accessed by default in the view directory. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,12 +16,18 @@
     </header>
     <main class='container'>
         <!-- using id so we can get document information from script. -->
-        <input type="text" id="input">
-        <button id="to-do-add-button">+</button>
-        <div id='to-do-container'>
+        <form action="/addtask" method="POST">
+        <input type="text" name="newtask" placeholder="Create a Task!" id="input"><button id="to-do-add-button">Add Task</button>
+        <h2>Added Task</h2>
+            <% for ( let i = 0; i < task.length; i++){ %>
+        <li><input type="checkbox" name="check" value="<%=task[i] %>" /> <%= task[i] %> </li>
 
-        </div>
+        <% } %>
+        <button formaction="/removetask" type="submit"> Remove </button>
+        </form>
+
     </main>
     <script src='./home.js'></script>
 </body>
 </html>
+

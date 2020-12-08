@@ -13,13 +13,15 @@ const session = require('express-session');
 
 const users = []; // TODO: Database Implementation. MongoDB implementation on the way
 
+var bodyParser = require("body-parser");
+
 if(process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
 
 app.set('view-engine', 'ejs');
 app.use(express.static('/home/super-rogatory/FirstPrecedence/public')); //allows us to add CSS to our EJS files
-app.use(express.urlencoded({ extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(flash());
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -66,25 +68,24 @@ app.post('/register', async(req, res) => {
 
 });
 
-app.get('/home', (req, res) => {
-    res.render('home.ejs');
+// app.get('/home', (req, res) => {
+//      res.render('home.ejs');
+// });
+
+// THE TASK ARRAY WILL HOLD ALL OF THE INFORMATION THAT THE USER INPUTS DURING THE SESSION
+var task = []; // this is a test array to comfirm the functionality of the program.
+
+//post route for adding new task
+app.post('/addtask', (req,res) => {
+    var newTask = req.body.newtask;// from name="newtask", we are able to access that information from the post of the home.ejs
+    task.push(newTask);//after adding to the array go back to the home route
+    res.redirect("/home");
+});
+app.get("/home", (req,res) => {    
+  res.render("home.ejs", { task: task});
 });
 
-// const authenticateUser = async(email, password, done) => {
-//     const user = getUserByEmail(email);
-//     if(user === null){
-//         return done(null, false, {message: 'Cannot find user.'});
-//     }
-//     try {
-//         if (await bcrypt.compare(password, user.password)) {
 
-//         } else {
-//             return done(null, false, {message: 'Email + Password does not match.'});
-//         }
-//     } catch(e) {
-//         return(e);
-//     }
-// } 
 
 // initialize our passport. 
 function initialize(passport, getUserByEmail, getUserByID) {
