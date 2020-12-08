@@ -9,6 +9,8 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
+const methodOverride = require('method-override');
+
 const passport_init = require('./passport-config');
 
 passport_init(passport, email => users.find(user => user.email === email), id => users.find(user => user.id === id)); // anonymous functions, no name. Gets pass to passport-config for authentication
@@ -33,28 +35,29 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(methodOverride('_method'));
 
-app.get('/', (req,res) => {
-    res.render('index.ejs', {name: "Kyle"});
+app.get('/', checkAuthenticated, (req,res) => {
+    res.render('index.ejs');
 
 });
 
-app.get('/login', (req, res) => {
+app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render('login.ejs');
 });
 
 // we will be posting from our ejs file to the route specified in app.post . SEE LOGIN.EJS line 21.
-app.post('/login', passport.authenticate('local', {
+app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
     successRedirect: '/home',
     failureRedirect: '/login',
     failureFlash: true // will be equal to "Cannot find user", or "Email + Password do not match"
 }));
 
-app.get('/register', (req, res) => {
+app.get('/register', checkNotAuthenticated, (req, res) => {
     res.render('register.ejs');
 });
 
-app.post('/register', async(req, res) => {
+app.post('/register', checkNotAuthenticated, async(req, res) => {
     // references name = email from the register ejs file.
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10); // we don't want to wait for bcrypt encryption. hence the asynchronous nature.
@@ -69,6 +72,18 @@ app.post('/register', async(req, res) => {
     }
 
 });
+function checkAuthenticated(req, res, next) {
+    if(req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect("./login");
+}
+function checkNotAuthenticated(req, res, next) {
+    if(req.isAuthenticated()) {
+        return res.redirect('/home');
+    }
+    next();
+}
 
 // THE TASK ARRAY WILL HOLD ALL OF THE INFORMATION THAT THE USER INPUTS DURING THE SESSION
 var task = []; // this is a test array to comfirm the functionality of the program.
@@ -99,10 +114,12 @@ if(typeof completeTask === "string"){
         task.splice(task.indexOf(completeTask[i]), 1);
     }
 }
-    res.redirect('./home');
+    res.redirect('/home');
 });
-app.delete('./logout', (req,res) => {
+app.delete('/logout', (req,res) => {
     req.logOut();
-    res.redirect('./login');
+    res.redirect('/login');
 })
+
+
 app.listen(3000);
