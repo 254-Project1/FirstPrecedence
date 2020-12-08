@@ -30,3 +30,6 @@ html, body {
     color: rgb(39.6, 26.3, 12.9);
     line-height: 1000%;
 }
+li {
+    list-style-type : none;
+}

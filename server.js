@@ -82,11 +82,27 @@ app.post('/addtask', (req,res) => {
     res.redirect("/home");
 });
 app.get("/home", (req,res) => {    
-  res.render("home.ejs", { task: task});
+  res.render("home.ejs", { task: task, complete:complete });
 });
 
+// THE COMPLETE ARRAY WILL HOLD ALL OF THE INFORMATION THAT HAS BEEN SUCCESSFULLY COMPLETED AND REMOVED. 
+// because of javascript's hoist nature, we can use it in line 85 and be alright.
+var complete = [];
+app.post('/removetask', (req, res) => {
+    var completeTask = req.body.check;
 
 
+if(typeof completeTask === "string"){
+    complete.push(completeTask);
+    task.splice(task.indexOf(completeTask), 1); // will remove or replace any duplicate element. A completed task shouldn't exist in task. We will remove it from task.
+} else if(typeof completeTask === "object") {
+    for( let i = 0; i < completeTask.length; i++){
+        complete.push(completeTask[i]);
+        task.splice(task.indexOf(completeTask[i]), 1);
+    }
+}
+    res.redirect('./home');
+});
 // initialize our passport. 
 function initialize(passport, getUserByEmail, getUserByID) {
     passport.use(new LocalStrategy({ usernameField: 'email'}, authenticateUser));

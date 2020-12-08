@@ -24,6 +24,10 @@
 
         <% } %>
         <button formaction="/removetask" type="submit"> Remove </button>
+        <h2>Completed Tasks</h2>
+        <% for ( let i = 0; i < complete.length; i++){ %>
+        <li><input type="checkbox" checked /> <%= complete[i] %> </li>
+        <% } %>
         </form>
 
     </main>
